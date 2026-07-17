@@ -1,80 +1,8 @@
-# Todo REST API
-
-A simple Todo REST API built with Node.js + Express, storing data in memory.
-
-## Quick Start
-
-```bash
-npm install
-node index.js
-```
-
-Server starts at `http://localhost:3000`.
-
-## API Endpoints
-
-### GET /todos
-
-List all todos.
-
-```bash
-curl http://localhost:3000/todos
-```
-
-### POST /todos
-
-Create a new todo.
-
-```bash
-curl -X POST http://localhost:3000/todos \
-  -H "Content-Type: application/json" \
-  -d '{"title": "Buy groceries"}'
-```
-
-### PUT /todos/:id
-
-Update a todo.
-
-```bash
-# Mark as completed
-curl -X PUT http://localhost:3000/todos/1 \
-  -H "Content-Type: application/json" \
-  -d '{"completed": true}'
-
-# Change title
-curl -X PUT http://localhost:3000/todos/1 \
-  -H "Content-Type: application/json" \
-  -d '{"title": "Buy organic groceries"}'
-```
-
-### DELETE /todos/:id
-
-Delete a todo.
-
-```bash
-curl -X DELETE http://localhost:3000/todos/1
-```
-
-## Data Shape
-
-Each todo has these fields:
-
-| Field     | Type    | Description                  |
-|-----------|---------|------------------------------|
-| id        | number  | Auto-incrementing identifier |
-| title     | string  | Todo text                    |
-| completed | boolean | Defaults to `false`          |
-| createdAt | string  | ISO 8601 timestamp           |
-
-## Error Responses
-
-| Status | When                                    |
-|--------|---------------------------------------- |
-| 400    | Missing/invalid `title` or `completed`   |
-| 404    | Todo with given `id` not found           |
-
-## Environment Variables
-
-| Variable | Default | Description          |
-|----------|---------|----------------------|
-| PORT     | 3000    | Server listening port |
+环境准备	Docker 启动 MySQL/Redis/RabbitMQ
+启动应用	Maven Wrapper 启动 Spring Boot
+日常操作	支付创建、查询、退款、手动对账的 curl 命令
+状态码速查	订单状态 + 响应码对照表
+对账差异类型	MATCH / LOCAL_ONLY / CHANNEL_ONLY / AMOUNT_MISMATCH 的处理建议
+故障排查	基础设施验证命令、日志查看、管理界面地址
+停止服务	正常停止 vs 清空数据
+定时任务	每日凌晨 2 点对账 + 告警
